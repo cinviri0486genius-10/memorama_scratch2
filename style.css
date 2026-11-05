@@ -1,0 +1,129 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #855CD6; /* Púrpura de Scratch */
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    user-select: none;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px #4D3380;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+/* Tablero ampliado a 6 columnas para las 24 tarjetas */
+.tablero-juego {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 800px;
+    margin: 20px auto;
+    perspective: 1000px;
+}
+
+.tarjeta {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.tarjeta.volteada {
+    transform: rotateY(180deg);
+}
+
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px #4D3380;
+    box-sizing: border-box;
+}
+
+.reverso {
+    background-color: #FF8C1A; /* Naranja Scratch */
+    border: 4px solid white;
+    font-size: 2.5rem;
+}
+
+.frente {
+    background-color: #FFFFFF;
+    transform: rotateY(180deg);
+    border: 4px solid #4C97FF;
+    padding: 5px;
+}
+
+/* Estilo visual para simular los bloques de texto de Scratch */
+.bloque-texto {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-transform: lowercase;
+    word-break: break-word;
+    line-height: 1.2;
+    display: inline-block;
+    box-shadow: 0 3px rgba(0,0,0,0.2);
+}
+
+/* Colores de categorías oficiales de Scratch para los bloques de texto */
+.movimiento { background-color: #4C97FF; }
+.apariencia { background-color: #9966FF; }
+.sonido     { background-color: #D65DB1; }
+.eventos    { background-color: #FFBF00; color: #575757; } /* Texto oscuro para contraste */
+.control    { background-color: #FFAB19; }
+
+.btn-reiniciar {
+    background-color: #4C97FF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px #2670DE;
+    margin-top: 15px;
+}
+
+.btn-reiniciar:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #2670DE;
+}
+
+.mensaje-victoria {
+    font-size: 1.8rem;
+    color: #5CB85C;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    display: none;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 5px #ccc;
+}
+
+/* Ajuste responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+    .tablero-juego {
+        grid-template-columns: repeat(4, 1fr); /* Pasa a 4 columnas si el espacio es reducido */
+    }
+    .bloque-texto {
+        font-size: 0.75rem;
+        padding: 4px 6px;
+    }
+}
